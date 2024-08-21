@@ -9,7 +9,7 @@ export const getAllTask = async (req, res, next) => {
 
     res.status(200).json({
       status: 200,
-      message: "Berhasil",
+      message: "Task created successfully",
       data: rows,
     });
   } catch (err) {
@@ -23,7 +23,7 @@ export const createTodo = async (req, res, next) => {
     const error = validationResult(req);
 
     const queryInput =
-      await `INSERT INTO Todo(title, description, statuss) VALUES ($1, $2, $3)`;
+      await `INSERT INTO Todo(title, description, status) VALUES ($1, $2, $3)`;
 
     if (!error.isEmpty()) throw new HttpError(error.array()[0 ?? 1].msg, 400);
 
